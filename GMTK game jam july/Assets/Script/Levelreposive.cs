@@ -33,18 +33,21 @@ public class Levelreposive : MonoBehaviour {
             {
                 damage = damageinnerlayer;
                 levheal.updatehealth(damage);
+                Destroy(gameObject);
             }
 
            else if (tag == midlayer)
             {
                 damage = damagemidlayer;
                 levheal.updatehealth(damage);
+                Destroy(gameObject);
             }
 
             else if (tag == outterlayer)
             {
                 damage = damageoutlayer;
                 levheal.updatehealth(damage);
+                Destroy(gameObject);
             }
 
         }
