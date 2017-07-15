@@ -1,7 +1,7 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2017
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GMTK game jam july", "GMTK game jam july.csproj", "{D7F2D14B-25ED-9ED9-674A-2D00B4EB480A}"
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GMTK game jam july", "Assembly-CSharp.csproj", "{911E3011-0DDC-BE23-1F44-7352F1BB89CD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -9,12 +9,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{D7F2D14B-25ED-9ED9-674A-2D00B4EB480A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D7F2D14B-25ED-9ED9-674A-2D00B4EB480A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D7F2D14B-25ED-9ED9-674A-2D00B4EB480A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D7F2D14B-25ED-9ED9-674A-2D00B4EB480A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{911E3011-0DDC-BE23-1F44-7352F1BB89CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{911E3011-0DDC-BE23-1F44-7352F1BB89CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{911E3011-0DDC-BE23-1F44-7352F1BB89CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{911E3011-0DDC-BE23-1F44-7352F1BB89CD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = Assembly-CSharp.csproj
 	EndGlobalSection
 EndGlobal
