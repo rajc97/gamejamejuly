@@ -10,33 +10,26 @@ public class Levelreposive : MonoBehaviour {
     string midlayer = "MiddleLayer";
     string outterlayer = "Outterlayer";
 
-    int damageinnerlayer = 5; // top layer of level if blocc is destroyed 
+    int damageinnerlayer = 25000; // top layer of level if blocc is destroyed 
     int damagemidlayer = 15; //  middle layer of level if blocc is destroyed
     int damageoutlayer = 30; //  outter layer of level if blocc is destroyed
 
-    // Use this for initialization
-    void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+   
+
 
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "PlayerBullet")
+        if (other.tag == "PlayerBullet")
         {
-           if(tag == innerlayer)
+            if (tag == innerlayer)
             {
                 damage = damageinnerlayer;
                 levheal.updatehealth(damage);
                 Destroy(gameObject);
             }
 
-           else if (tag == midlayer)
+            else if (tag == midlayer)
             {
                 damage = damagemidlayer;
                 levheal.updatehealth(damage);
@@ -51,6 +44,6 @@ public class Levelreposive : MonoBehaviour {
             }
 
         }
-        
+
     }
 }

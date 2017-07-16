@@ -5,19 +5,21 @@ using UnityEngine.SceneManagement;
 
 public class LevelHealth : MonoBehaviour {
 
-    int LevelMaxHealth = 100000; // 100,000 level max heatlh
-    int LevelCurrentHealth; //level current health;
-    public int Avgmaxhealth; //the percent of health left
+   public float LevelMaxHealth = 100000; // 100,000 level max heatlh
+  public  float LevelCurrentHealth; //level current health;
+    public float Avgmaxhealth; //the percent of health left
     int damage; // how much damage the blocc that was destoryed deals
-    Levelreposive flame; // used to get what blocc was destroyed
+   
 
-    int innerlayer = 5; // top layer of level if blocc is destroyed 
+    int innerlayer = 25000; // top layer of level if blocc is destroyed 
     int midlayer = 15; //  middle layer of level if blocc is destroyed
     int outlayer = 30; //  outter layer of level if blocc is destroyed
 	// Use this for initialization
 	void Start () {
         LevelCurrentHealth = LevelMaxHealth;
-	}
+        Avgmaxhealth = 100;
+
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -41,13 +43,14 @@ public class LevelHealth : MonoBehaviour {
         {
             LevelCurrentHealth -= damage;
         }
-        Avgmaxhealth = LevelCurrentHealth / LevelMaxHealth;
-        if (Avgmaxhealth < 50)
+          
+        Avgmaxhealth =(LevelCurrentHealth / LevelMaxHealth) *100; 
+        if (Avgmaxhealth <= 0)
         {
             SceneManager.LoadScene("");
         }
     }
-    public int GetAvgHealth()
+    public float GetAvgHealth()
     {
         return Avgmaxhealth = LevelCurrentHealth / LevelMaxHealth;
     }

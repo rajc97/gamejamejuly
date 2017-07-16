@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 
 public class PlayerScript : MonoBehaviour
@@ -8,7 +9,8 @@ public class PlayerScript : MonoBehaviour
 
     #region SerializeField
     [Header("Player")]
-    [SerializeField] GameObject player;
+    [SerializeField]
+    GameObject player;
     [SerializeField] Animation player_anim;
     [SerializeField] int Maxhealth = 100;
     [SerializeField] int Currenthealth;
@@ -17,11 +19,13 @@ public class PlayerScript : MonoBehaviour
     public float speed = 0.01f;
 
     [Header("Sound")]
-    [SerializeField] AudioClip Shoot_sound;
+    [SerializeField]
+    AudioClip Shoot_sound;
     [SerializeField] AudioClip Take_dmg_sound;
 
     [Header("Projectile")]
-    [SerializeField] GameObject bullet;
+    [SerializeField]
+    GameObject bullet;
 
     #endregion
 
@@ -33,14 +37,14 @@ public class PlayerScript : MonoBehaviour
     KeyCode Fire = KeyCode.K;
     KeyCode takedmg = KeyCode.M;
     KeyCode heal = KeyCode.L;
-#endregion
+    #endregion
 
 
 
     float vertical_movement = 0;
     float horizontal_movement = 0;
-    
-    
+
+
 
     // Use this for initialization
     void Start()
@@ -77,7 +81,7 @@ public class PlayerScript : MonoBehaviour
         {
             horizontal_direction = speed;
         }
-        if(Input.GetKeyUp(up)||Input.GetKeyUp(down))
+        if (Input.GetKeyUp(up) || Input.GetKeyUp(down))
         {
             vertical_direction = 0;
         }
@@ -87,7 +91,7 @@ public class PlayerScript : MonoBehaviour
         }
         if (Input.GetKeyDown(Fire))
         {
-            if(!(vertical_direction==0&&horizontal_direction==0))
+            if (!(vertical_direction == 0 && horizontal_direction == 0))
             {
                 horizontal_movement = horizontal_direction;
                 vertical_movement = vertical_direction;
@@ -95,11 +99,11 @@ public class PlayerScript : MonoBehaviour
             Shoot(bullet);
         }
 
-        if(Input.GetKeyDown(takedmg))
+        if (Input.GetKeyDown(takedmg))
         {
             Currenthealth -= 10;
         }
-        if(Input.GetKeyDown(heal))
+        if (Input.GetKeyDown(heal))
         {
             Currenthealth += 5;
         }
@@ -123,7 +127,10 @@ public class PlayerScript : MonoBehaviour
     public void TakeDamage(int damage)
     {
         if (Currenthealth - damage <= 0)
+        {
             Currenthealth = 0;
+            SceneManager.LoadScene("");
+        }
         else
             Currenthealth -= damage;
     }
@@ -131,8 +138,15 @@ public class PlayerScript : MonoBehaviour
     #endregion
     public void Shoot(GameObject _projectile)
     {
-        GameObject shot=(GameObject)Instantiate(_projectile, transform.position, transform.rotation);
+        GameObject shot = (GameObject)Instantiate(_projectile, new Vector3(transform.position.x + horizontal_movement * 12, transform.position.y + vertical_movement * 12, transform.position.z), transform.rotation);
         shot.GetComponent<ProjectileController>().Init(vertical_movement, horizontal_movement);
-        
+
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.collider.tag == "EnemyBullet")
+        {
+            TakeDamage(5);
+        }
     }
 }
